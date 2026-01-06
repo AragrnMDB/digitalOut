@@ -3,3 +3,5 @@ begin               KEYWORD2
 startBlink          KEYWORD2
 processBlink        KEYWORD2
 holdBlink           KEYWORD2
+startFlash          KEYWORD2
+processFlash        KEYWORD2

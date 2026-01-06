@@ -19,7 +19,7 @@ class mdb_digitalOut {
       unsigned long _offDuration;                   // Duration of the off part of the blink
       uint8_t       _initialState;                  // Starting state of the output
       uint8_t       _currentState;                  // Current state of the output
-      bool          _flashFlag;
+      bool          _flashFlag;                     // True if currently flashing (HIGH)
       mdb_timer     _outputTimer;                   // mdb_timer object to time the on and off parts of the blink or flash
 };
 

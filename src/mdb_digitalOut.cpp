@@ -2,10 +2,9 @@
 #include "mdb_digitalOut.h"
 #include "mdb_timer.h"
 
-	                        
 void mdb_digitalOut::begin() {
   _currentState = _initialState;                                // Set the Current State as the Initial State
-  _flashFlag = false;
+  _flashFlag = false;                                           // Turn off the flash flag
 	pinMode(_output, OUTPUT);                                     // Set up the output pin
   digitalWrite(_output, _initialState);                         // Write the Initial State to the output pin
 }
@@ -29,22 +28,22 @@ bool mdb_digitalOut::processBlink() {                           // Function to p
   return (_currentState);                                       // Return the Current State of the blinker output
 }
 
-void mdb_digitalOut::holdBlink() {                               // Function that pauses blinking
-  _outputTimer.resetTimer();                                     // Reset the blink timer
+void mdb_digitalOut::holdBlink() {                              // Function that pauses blinking
+  _outputTimer.resetTimer();                                    // Reset the blink timer
 }
 
 void mdb_digitalOut::startFlash() {
-    digitalWrite(_output, HIGH);                                  // Turn on the output
-    _flashFlag = true;                                            // Show that we're flashing
-    _outputTimer.resetTimer();                                    // Reset the flash timer
+    digitalWrite(_output, HIGH);                                // Turn on the output
+    _flashFlag = true;                                          // Show that we're flashing
+    _outputTimer.resetTimer();                                  // Reset the flash timer
 }
 
 bool mdb_digitalOut::processFlash() {
-  if (_flashFlag) {                                                // If we're timing the flash output
-    if (_outputTimer.timeElapsed(_onDuration)) {                   // If the flash time has elapsed
-      digitalWrite(_output, LOW);                                  // Turn off the output
-      _flashFlag = false;                                          // Turn off the flash flag
+  if (_flashFlag) {                                             // If we're timing the flash output
+    if (_outputTimer.timeElapsed(_onDuration)) {                // If the flash time has elapsed
+      digitalWrite(_output, LOW);                               // Turn off the output
+      _flashFlag = false;                                       // Turn off the flash flag
     }
   }
-  return (_flashFlag);
+  return (_flashFlag);                                          // Return the flash flag
 }
