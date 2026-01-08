@@ -3,6 +3,7 @@
 #include "mdb_timer.h"
 
 void mdb_digitalOut::begin() {
+  _outputTimer.begin();
   _currentState = _initialState;                                // Set the Current State as the Initial State
   _flashFlag = false;                                           // Turn off the flash flag
 	pinMode(_output, OUTPUT);                                     // Set up the output pin
