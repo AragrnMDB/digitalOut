@@ -14,7 +14,7 @@ void mdb_digitalOut::startBlink() {                             // Function to s
     _outputTimer.resetTimer();                                  // Reset the blink timer
 }
 
-bool mdb_digitalOut::processBlink() {                           // Function to prcess a blinker
+bool mdb_digitalOut::processBlink() {                           // Function to process a blinker
   if (_currentState == HIGH) {                                  // If the blinker is High
     if (_outputTimer.timeElapsed(_onDuration)) {                // If the blink ON time has elapsed (blink timer resets if true)
       _currentState = LOW;                                      // Set the Current State of the blinker to Low
@@ -27,6 +27,11 @@ bool mdb_digitalOut::processBlink() {                           // Function to p
     }
   }
   return (_currentState);                                       // Return the Current State of the blinker output
+}
+
+void mdb_digitalOut::adjustBlink(unsigned long onDuration, unsigned long offDuration) {
+  _onDuration = onDuration;
+  _offDuration = offDuration;
 }
 
 void mdb_digitalOut::holdBlink() {                              // Function that pauses blinking
@@ -47,4 +52,8 @@ bool mdb_digitalOut::processFlash() {
     }
   }
   return (_flashFlag);                                          // Return the flash flag
+}
+
+void mdb_digitalOut::adjustFlash(unsigned long onDuration) {
+  _onDuration = onDuration;
 }

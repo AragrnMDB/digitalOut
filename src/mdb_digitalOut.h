@@ -10,9 +10,11 @@ class mdb_digitalOut {
       void begin();                                 // Set up and start the digital output
       void startBlink();                            // Start the blink
       bool processBlink();                          // Process blinking
+      void adjustBlink(unsigned long onDuration, unsigned long offDuration); // Sets the new onDuration and offDuration
       void holdBlink();                             // Hold blinking
       void startFlash();                            // Start the flash
       bool processFlash();                          // If the duration is up, turn off the output. Return the state of the output.
+      void adjustFlash(unsigned long onDuration);   // Sets the new onDuration
    private:
       uint8_t       _output;                        // The output pin to control
       unsigned long _onDuration;                    // Duration of the on part of the blink or flash
